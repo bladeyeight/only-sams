@@ -2,31 +2,24 @@ version: '3.8'
 
 services:
   frontend:
-    build:
-      context: ./only-sams-frontend
-      dockerfile: Dockerfile.prod
+    build: ./only-sams-frontend
     ports:
-      - "80:80"
+      - "3000:80"
     depends_on:
       - backend
     networks:
       - app-network
-    restart: always
 
   backend:
-    build:
-      context: ./only-sams-backend
-      dockerfile: Dockerfile.prod
+    build: ./only-sams-backend
     ports:
       - "5000:5000"
     environment:
       - MONGODB_URI=mongodb://mongo:27017/gameReviews
-      - NODE_ENV=production
     depends_on:
       - mongo
     networks:
       - app-network
-    restart: always
 
   mongo:
     image: mongo:latest
@@ -36,7 +29,6 @@ services:
       - mongo-data:/data/db
     networks:
       - app-network
-    restart: always
 
 networks:
   app-network:

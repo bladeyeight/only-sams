@@ -3,13 +3,13 @@ import mongoose, { Document, Schema } from 'mongoose';
 // Define interface for Review document
 export interface IReview extends Document {
   title: string;
-  game: string;
+  type: string;
   rating: number;
   content: string;
-  platform: string;
+  platforms: string[];
   genre: string;
   releaseYear?: number;
-  imageUrl?: string;
+  imageUrls?: string[];
   createdAt: Date;
   updatedAt: Date;
 }
@@ -21,7 +21,7 @@ const reviewSchema = new Schema<IReview>({
     required: true,
     trim: true
   },
-  game: {
+  type: {
     type: String,
     required: true,
     trim: true
@@ -36,10 +36,10 @@ const reviewSchema = new Schema<IReview>({
     type: String,
     required: true
   },
-  platform: {
-    type: String,
+  platforms: {
+    type: [String],
     required: true,
-    trim: true
+    validate: [(val: string[]) => val.length > 0, 'At least one platform is required']
   },
   genre: {
     type: String,
@@ -49,8 +49,9 @@ const reviewSchema = new Schema<IReview>({
   releaseYear: {
     type: Number
   },
-  imageUrl: {
-    type: String
+  imageUrls: {
+    type: [String],
+    default: []
   },
   createdAt: {
     type: Date,

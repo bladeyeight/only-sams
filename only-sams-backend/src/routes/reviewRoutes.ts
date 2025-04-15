@@ -31,13 +31,13 @@ router.get('/:id', async (req: Request, res: Response): Promise<void> => {
 router.post('/', async (req: Request, res: Response): Promise<void> => {
   const review = new Review({
     title: req.body.title,
-    game: req.body.game,
+    type: req.body.type,
     rating: req.body.rating,
     content: req.body.content,
-    platform: req.body.platform,
+    platforms: req.body.platforms,
     genre: req.body.genre,
     releaseYear: req.body.releaseYear,
-    imageUrl: req.body.imageUrl
+    imageUrls: req.body.imageUrls
   });
 
   try {
@@ -59,13 +59,13 @@ router.patch('/:id', async (req: Request, res: Response): Promise<void> => {
 
     // Update fields that are present in the request
     if (req.body.title) review.title = req.body.title;
-    if (req.body.game) review.game = req.body.game;
+    if (req.body.type) review.type = req.body.type;
     if (req.body.rating) review.rating = req.body.rating;
     if (req.body.content) review.content = req.body.content;
-    if (req.body.platform) review.platform = req.body.platform;
+    if (req.body.platforms) review.platforms = req.body.platforms;
     if (req.body.genre) review.genre = req.body.genre;
     if (req.body.releaseYear) review.releaseYear = req.body.releaseYear;
-    if (req.body.imageUrl) review.imageUrl = req.body.imageUrl;
+    if (req.body.imageUrls) review.imageUrls = req.body.imageUrls;
     
     review.updatedAt = new Date();
 

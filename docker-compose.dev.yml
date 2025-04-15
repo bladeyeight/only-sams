@@ -4,29 +4,36 @@ services:
   frontend:
     build:
       context: ./only-sams-frontend
-      dockerfile: Dockerfile.prod
+      dockerfile: Dockerfile.dev
     ports:
-      - "80:80"
+      - "3000:3000"
+    volumes:
+      - ./only-sams-frontend:/app
+      - /app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - NODE_ENV=development
     depends_on:
       - backend
     networks:
       - app-network
-    restart: always
 
   backend:
     build:
       context: ./only-sams-backend
-      dockerfile: Dockerfile.prod
+      dockerfile: Dockerfile.dev
     ports:
       - "5000:5000"
+    volumes:
+      - ./only-sams-backend:/app
+      - /app/node_modules
     environment:
       - MONGODB_URI=mongodb://mongo:27017/gameReviews
-      - NODE_ENV=production
+      - NODE_ENV=development
     depends_on:
       - mongo
     networks:
       - app-network
-    restart: always
 
   mongo:
     image: mongo:latest
@@ -36,7 +43,6 @@ services:
       - mongo-data:/data/db
     networks:
       - app-network
-    restart: always
 
 networks:
   app-network:
