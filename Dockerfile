@@ -24,16 +24,22 @@ RUN mkdir -p /var/log/supervisor /var/run
 WORKDIR /app/backend
 COPY --from=backend-build /app/backend ./
 ENV NODE_ENV=production
-ENV MONGODB_URI=mongodb+srv://samueljperry1991:b_%nH9m4xSfZJqB@only-sams-db.6wz2wrk.mongodb.net/gameReviews?retryWrites=true&w=majority&appName=only-sams-db
+ENV MONGODB_URI="mongodb+srv://samueljperry1991:b_%25nH9m4xSfZJqB@only-sams-db.6wz2wrk.mongodb.net/gameReviews?retryWrites=true&w=majority&appName=only-sams-db"
 
 # Set up frontend
 COPY --from=frontend-build /app/frontend/build /usr/share/nginx/html
 
 # Configure nginx
 COPY nginx.conf /etc/nginx/http.d/default.conf
+# Save original nginx config for SSL
+COPY nginx.conf /etc/nginx/http.d/default.conf.original
 
 # Configure supervisord
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+# Copy entrypoint script and ensure it's executable
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
 EXPOSE 80 443
 
