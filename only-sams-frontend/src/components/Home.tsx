@@ -78,7 +78,6 @@ const Home: React.FC = () => {
 
   return (
     <div className="home-container">
-      <Navbar />
       <div className="home-content">
         <div className="hero-section">
           <h1>Welcome to Only-Sams</h1>

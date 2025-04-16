@@ -13,6 +13,26 @@ router.get('/', async (req: Request, res: Response): Promise<void> => {
   }
 });
 
+// Get all game reviews (type = 'review')
+router.get('/reviews', async (req: Request, res: Response): Promise<void> => {
+  try {
+    const reviews: IReview[] = await Review.find({ type: 'review' }).sort({ createdAt: -1 });
+    res.json(reviews);
+  } catch (err: any) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// Get all editorials (type = 'editorial')
+router.get('/editorials', async (req: Request, res: Response): Promise<void> => {
+  try {
+    const editorials: IReview[] = await Review.find({ type: 'editorial' }).sort({ createdAt: -1 });
+    res.json(editorials);
+  } catch (err: any) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
 // Get a single review
 router.get('/:id', async (req: Request, res: Response): Promise<void> => {
   try {
