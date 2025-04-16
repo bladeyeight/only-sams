@@ -4,7 +4,7 @@ services:
   frontend:
     build:
       context: ./only-sams-frontend
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     ports:
       - "3000:3000"
     volumes:
@@ -21,33 +21,18 @@ services:
   backend:
     build:
       context: ./only-sams-backend
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     ports:
       - "5000:5000"
     volumes:
       - ./only-sams-backend:/app
       - /app/node_modules
     environment:
-      - MONGODB_URI=mongodb://mongo:27017/gameReviews
+      - MONGODB_URI=mongodb+srv://samueljperry1991:b_%nH9m4xSfZJqB@only-sams-db.6wz2wrk.mongodb.net/gameReviews?retryWrites=true&w=majority&appName=only-sams-db
       - NODE_ENV=development
-    depends_on:
-      - mongo
-    networks:
-      - app-network
-
-  mongo:
-    image: mongo:latest
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongo-data:/data/db
     networks:
       - app-network
 
 networks:
   app-network:
     driver: bridge
-
-volumes:
-  mongo-data:
-    driver: local
