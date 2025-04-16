@@ -14,8 +14,8 @@ RUN npm run build
 
 FROM node:16-alpine
 
-# Install nginx and supervisord
-RUN apk add --no-cache nginx supervisor
+# Install nginx, supervisord, and certbot for Let's Encrypt SSL
+RUN apk add --no-cache nginx supervisor certbot
 
 # Create necessary directories for supervisord
 RUN mkdir -p /var/log/supervisor /var/run
@@ -35,7 +35,7 @@ COPY nginx.conf /etc/nginx/http.d/default.conf
 # Configure supervisord
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-EXPOSE 80
+EXPOSE 80 443
 
-# Start supervisord
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+# Start via entrypoint (runs certbot, then supervisord)
+ENTRYPOINT ["/entrypoint.sh"]
