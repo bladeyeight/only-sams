@@ -6,73 +6,95 @@ const Home: React.FC = () => {
   const topGames2025 = [
     {
       id: 1,
-      title: "Elden Ring: Shadow of the Erdtree",
-      developer: "FromSoftware",
-      releaseDate: "February 2025",
-      description: "The highly anticipated expansion to the award-winning Elden Ring, taking players to new realms of the Lands Between."
+      title: "Atomfall",
+      developer: "Rebellion Developments",
+      releaseDate: "March 27, 2025"
     },
     {
       id: 2,
-      title: "Starfield: Shattered Space",
-      developer: "Bethesda Game Studios",
-      releaseDate: "March 2025",
-      description: "The first major expansion for Starfield, introducing new planets, factions, and storylines to the universe."
+      title: "Blade Chimera",
+      developer: "Team Ladybug",
+      releaseDate: "January 15, 2025"
     },
     {
       id: 3,
-      title: "The Legend of Zelda: Echoes of Wisdom",
-      developer: "Nintendo",
-      releaseDate: "May 2025",
-      description: "A brand new Zelda adventure focusing on Princess Zelda as the playable protagonist."
+      title: "South of Midnight",
+      developer: "Compulsion Games",
+      releaseDate: "April 3, 2025"
     },
     {
       id: 4,
-      title: "Cyberpunk 2077: Chrome Dynasty",
-      developer: "CD Projekt Red",
-      releaseDate: "June 2025",
-      description: "A standalone expansion to Cyberpunk 2077, set in a new district of Night City."
+      title: "Avowed",
+      developer: "Obsidian Entertainment",
+      releaseDate: "February 13, 2025"
     },
     {
       id: 5,
-      title: "Mass Effect: Nexus",
-      developer: "BioWare",
-      releaseDate: "August 2025",
-      description: "The long-awaited return to the Mass Effect universe, bridging the original trilogy with a new saga."
+      title: "Citizen Sleeper 2: Starward Vector",
+      developer: "Jump Over The Age",
+      releaseDate: "January 31, 2025"
+    }
+  ];
+  const topGamesAllTime = [
+    {
+      id: 1,
+      title: "Zelda: Breath of the Wild, Zelda: Tears of the Kingdom, Zelda: Ocarina of Time",
+      developer: "Nintendo",
+      releaseDate: "March 3, 2017; March 12, 2023; Nov 21, 1998"
+    },
+    {
+      id: 2,
+      title: "Xcom 2",
+      developer: "Firaxis Games",
+      releaseDate: "February 5, 2016"
+    },
+    {
+      id: 3,
+      title: "Baldurs Gate 3",
+      developer: "Larian Studios",
+      releaseDate: "August 3, 2023"
+    },
+    {
+      id: 4,
+      title: "Resident Evil 2 Remake",
+      developer: "Capcom",
+      releaseDate: "January 25, 2019"
+    },
+    {
+      id: 5,
+      title: "Northgard",
+      developer: "Shiro Games",
+      releaseDate: "March 7, 2018"
     },
     {
       id: 6,
-      title: "God of War: Ragnarok - Aftermath",
-      developer: "Santa Monica Studio",
-      releaseDate: "September 2025",
-      description: "A continuation of Kratos and Atreus's journey following the events of Ragnarok."
+      title: "Into the Breach",
+      developer: "Subset Games",
+      releaseDate: "February 27, 2018"
     },
     {
       id: 7,
-      title: "Horizon: New Dawn",
-      developer: "Guerrilla Games",
-      releaseDate: "October 2025",
-      description: "The third installment in the Horizon series, taking Aloy to unexplored territories."
+      title: "Witcher 3",
+      developer: "CD Projekt",
+      releaseDate: "May 18, 2015"
     },
     {
       id: 8,
-      title: "Bioshock: Isolation",
-      developer: "Cloud Chamber",
-      releaseDate: "October 2025",
-      description: "A new entry in the Bioshock franchise, exploring themes of isolation and identity in a new dystopian setting."
+      title: "Half-Life",
+      developer: "Valve",
+      releaseDate: "November 19, 1998"
     },
     {
       id: 9,
-      title: "Final Fantasy XVI: Realm of Embers",
-      developer: "Square Enix",
-      releaseDate: "November 2025",
-      description: "An expansion to Final Fantasy XVI, continuing the epic saga of Valisthea."
+      title: "Soma",
+      developer: "Frictional Games",
+      releaseDate: "September 22, 2015"
     },
     {
       id: 10,
-      title: "Metroid Prime 4: Echoes of the Void",
-      developer: "Retro Studios",
-      releaseDate: "December 2025",
-      description: "The long-anticipated fourth installment in the Metroid Prime series, following Samus Aran on a new interstellar adventure."
+      title: "Prince of Persia: Lost Crown",
+      developer: "Ubisoft Montpellier",
+      releaseDate: "January 18, 2024"
     }
   ];
 
@@ -94,7 +116,6 @@ const Home: React.FC = () => {
                   <h3>{game.title}</h3>
                   <p className="game-developer">Developer: {game.developer}</p>
                   <p className="game-release">Release: {game.releaseDate}</p>
-                  <p className="game-description">{game.description}</p>
                 </div>
               </div>
             ))}

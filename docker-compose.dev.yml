@@ -28,7 +28,7 @@ services:
       - ./only-sams-backend:/app
       - /app/node_modules
     environment:
-      - MONGODB_URI=mongodb+srv://samueljperry1991:b_%nH9m4xSfZJqB@only-sams-db.6wz2wrk.mongodb.net/gameReviews?retryWrites=true&w=majority&appName=only-sams-db
+      - MONGODB_URI=mongodb+srv://samueljperry1991:b_%25nH9m4xSfZJqB@only-sams-db.6wz2wrk.mongodb.net/gameReviews?retryWrites=true&w=majority&appName=only-sams-db
       - NODE_ENV=development
     networks:
       - app-network
