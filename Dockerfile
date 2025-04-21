@@ -20,6 +20,12 @@ RUN apk add --no-cache nginx supervisor certbot
 # Create necessary directories for supervisord
 RUN mkdir -p /var/log/supervisor /var/run
 
+# Install certbot for SSL
+RUN apk add --no-cache certbot
+
+# Create directory for certificates
+RUN mkdir -p /certs
+
 # Set up backend
 WORKDIR /app/backend
 COPY --from=backend-build /app/backend ./
@@ -29,19 +35,19 @@ ENV MONGODB_URI="mongodb+srv://samueljperry1991:b_%25nH9m4xSfZJqB@only-sams-db.6
 # Set up frontend
 COPY --from=frontend-build /app/frontend/build /usr/share/nginx/html
 
-# Configure nginx
-COPY nginx.conf /etc/nginx/http.d/default.conf
-# Save original nginx config for SSL
-COPY nginx.conf /etc/nginx/http.d/default.conf.original
+# Create directory for nginx config
+RUN mkdir -p /etc/nginx/http.d
 
 # Configure supervisord
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-# Copy entrypoint script and ensure it's executable
+# Copy entrypoint script
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-EXPOSE 80 443
+# Expose ports
+EXPOSE 80
+EXPOSE 443
 
-# Start via entrypoint (runs certbot, then supervisord)
+# Set entrypoint
 ENTRYPOINT ["/entrypoint.sh"]

@@ -8,6 +8,16 @@
     {
       "ContainerPort": "80",
       "HostPort": "80"
+    },
+    {
+      "ContainerPort": "443",
+      "HostPort": "443"
+    }
+  ],
+  "Volumes": [
+    {
+      "HostDirectory": "/var/app/current/certs",
+      "ContainerDirectory": "/certs"
     }
   ],
   "Logging": "/var/log/nginx"
