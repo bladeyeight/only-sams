@@ -8,7 +8,7 @@ export interface IReview extends Document {
   content: string;
   platforms: string[];
   genre: string;
-  releaseYear?: number;
+  releaseDate?: Date;
   imageUrls?: string[];
   createdAt: Date;
   updatedAt: Date;
@@ -46,8 +46,8 @@ const reviewSchema = new Schema<IReview>({
     required: true,
     trim: true
   },
-  releaseYear: {
-    type: Number
+  releaseDate: {
+    type: Date
   },
   imageUrls: {
     type: [String],

@@ -8,7 +8,7 @@ interface Review {
   content: string;
   platforms: string[];
   genre: string;
-  releaseYear?: number;
+  releaseDate?: Date;
   imageUrls?: string[];
   createdAt: string;
   updatedAt: string;
@@ -22,7 +22,9 @@ const Reviews: React.FC = () => {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const response = await fetch('/api/reviews/reviews');
+        const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+        // We want to fetch game reviews specifically
+        const response = await fetch(`${apiUrl}/reviews/reviews`);
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -59,22 +61,22 @@ const Reviews: React.FC = () => {
             <thead>
               <tr>
                 <th>Title</th>
-                <th>Rating</th>
                 <th>Genre</th>
                 <th>Platforms</th>
-                <th>Release Year</th>
+                <th>Release Date</th>
                 <th>Date Published</th>
+                <th>Rating</th>
               </tr>
             </thead>
             <tbody>
               {reviews.map((review) => (
                 <tr key={review._id}>
                   <td>{review.title}</td>
-                  <td>{review.rating}/10</td>
                   <td>{review.genre}</td>
                   <td>{review.platforms.join(', ')}</td>
-                  <td>{review.releaseYear || 'N/A'}</td>
+                  <td>{review.releaseDate ? new Date(review.releaseDate).toLocaleDateString() : 'N/A'}</td>
                   <td>{new Date(review.createdAt).toLocaleDateString()}</td>
+                  <td><span className="review-rating">{review.rating}</span></td>
                 </tr>
               ))}
             </tbody>

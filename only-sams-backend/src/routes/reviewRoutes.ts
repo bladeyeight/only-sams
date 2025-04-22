@@ -13,10 +13,10 @@ router.get('/', async (req: Request, res: Response): Promise<void> => {
   }
 });
 
-// Get all game reviews (type = 'review')
+// Get all game reviews (type = 'Review')
 router.get('/reviews', async (req: Request, res: Response): Promise<void> => {
   try {
-    const reviews: IReview[] = await Review.find({ type: 'review' }).sort({ createdAt: -1 });
+    const reviews: IReview[] = await Review.find({ type: 'Review' }).sort({ createdAt: -1 });
     res.json(reviews);
   } catch (err: any) {
     res.status(500).json({ message: err.message });
@@ -56,7 +56,7 @@ router.post('/', async (req: Request, res: Response): Promise<void> => {
     content: req.body.content,
     platforms: req.body.platforms,
     genre: req.body.genre,
-    releaseYear: req.body.releaseYear,
+    releaseDate: req.body.releaseDate,
     imageUrls: req.body.imageUrls
   });
 
@@ -84,7 +84,7 @@ router.patch('/:id', async (req: Request, res: Response): Promise<void> => {
     if (req.body.content) review.content = req.body.content;
     if (req.body.platforms) review.platforms = req.body.platforms;
     if (req.body.genre) review.genre = req.body.genre;
-    if (req.body.releaseYear) review.releaseYear = req.body.releaseYear;
+    if (req.body.releaseDate) review.releaseDate = req.body.releaseDate;
     if (req.body.imageUrls) review.imageUrls = req.body.imageUrls;
     
     review.updatedAt = new Date();

@@ -19,7 +19,9 @@ const Editorials: React.FC = () => {
   useEffect(() => {
     const fetchEditorials = async () => {
       try {
-        const response = await fetch('/api/reviews/editorials');
+        const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+        // Fetch editorials specifically
+        const response = await fetch(`${apiUrl}/reviews/editorials`);
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
