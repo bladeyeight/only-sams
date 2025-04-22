@@ -12,8 +12,19 @@ dotenv.config({ path: path.join(__dirname, '../config', envFile) });
 const app: Express = express();
 const PORT: number = parseInt(process.env.PORT || '5000', 10);
 
+// CORS configuration
+const corsOptions = {
+  origin: [
+    'http://localhost:3000',
+    'https://only-sams.net',
+    'https://www.only-sams.net'
+  ],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+  credentials: true
+};
+
 // Middleware
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Connect to MongoDB

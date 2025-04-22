@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './style/Reviews.css';
 
 interface Review {
@@ -70,8 +71,12 @@ const Reviews: React.FC = () => {
             </thead>
             <tbody>
               {reviews.map((review) => (
-                <tr key={review._id}>
-                  <td>{review.title}</td>
+                <tr key={review._id} className="review-row">
+                  <td>
+                    <Link to={`/reviews/${review._id}`} className="review-title-link">
+                      {review.title}
+                    </Link>
+                  </td>
                   <td>{review.genre}</td>
                   <td>{review.platforms.join(', ')}</td>
                   <td>{review.releaseDate ? new Date(review.releaseDate).toLocaleDateString() : 'N/A'}</td>
