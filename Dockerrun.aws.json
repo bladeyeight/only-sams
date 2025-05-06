@@ -18,6 +18,10 @@
     {
       "HostDirectory": "/var/app/current/certs",
       "ContainerDirectory": "/certs"
+    },
+    {
+      "HostDirectory": "/var/certbot/letsencrypt",
+      "ContainerDirectory": "/etc/letsencrypt"
     }
   ],
   "Logging": "/var/log/nginx"

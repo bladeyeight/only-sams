@@ -1,0 +1,4 @@
+Retrieving logs...
+Logs were saved to /Users/samperry/Documents/repositories/only-sams/.elasticbeanstalk/logs/250506_152847
+Logs were saved to /Users/samperry/Documents/repositories/only-sams/.elasticbeanstalk/logs/250506_152847
+Updated symlink at /Users/samperry/Documents/repositories/only-sams/.elasticbeanstalk/logs/latest
