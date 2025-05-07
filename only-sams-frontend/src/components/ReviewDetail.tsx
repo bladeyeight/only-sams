@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import './style/ReviewDetail.css';
 
 interface Review {
@@ -57,26 +57,28 @@ const ReviewDetail: React.FC = () => {
   }
 
   // Format the content with paragraphs
-  const formattedContent = review.content.split('  ').map((paragraph, index) => (
-    <p key={index}>{paragraph.trim()}</p>
+  const formattedContent = review.content.split('\n\n').map((paragraph, index) => (
+    <p key={index} className={index > 0 ? "indented-paragraph" : ""}>
+      {paragraph.trim()}
+    </p>
   ));
 
   return (
     <div className="review-detail-container">
-      <Link to="/reviews" className="back-button">← Back to Reviews</Link>
-      
       <div className="review-detail-header">
         <h1 className="review-detail-title">{review.title}</h1>
+        <div className="review-detail-rating-container">
+          <span className="review-detail-rating">{review.rating}</span>
+        </div>
         <div className="review-detail-meta">
           <span className="review-detail-genre">{review.genre}</span>
           <span className="review-detail-platforms">{review.platforms.join(', ')}</span>
           {review.releaseDate && (
             <span className="review-detail-release">
-              Released: {new Date(review.releaseDate).toLocaleDateString()}
+              Released: {new Date(review.releaseDate).toLocaleDateString(undefined, { timeZone: 'UTC' })}
             </span>
           )}
         </div>
-        <span className="review-detail-rating">{review.rating}</span>
       </div>
 
       {review.imageUrls && review.imageUrls.length > 0 && (

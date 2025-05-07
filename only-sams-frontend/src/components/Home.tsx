@@ -20,7 +20,7 @@ const Home: React.FC = () => {
       id: 3,
       title: "South of Midnight",
       developer: "Compulsion Games",
-      releaseDate: "April 3, 2025"
+      releaseDate: "April 8, 2025"
     },
     {
       id: 4,
