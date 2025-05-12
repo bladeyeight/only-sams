@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { apiGet } from '../utils/api';
 import './style/Editorials.css';
 
 interface Editorial {
@@ -19,13 +20,8 @@ const Editorials: React.FC = () => {
   useEffect(() => {
     const fetchEditorials = async () => {
       try {
-        const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
-        // Fetch editorials specifically
-        const response = await fetch(`${apiUrl}/reviews/editorials`);
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        const data = await response.json();
+        // Use the API utility to fetch editorials
+        const data = await apiGet<Editorial[]>('reviews/editorials');
         setEditorials(data);
         setLoading(false);
       } catch (err) {

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { apiGet } from '../utils/api';
 import './style/ReviewDetail.css';
 
 interface Review {
@@ -24,14 +25,8 @@ const ReviewDetail: React.FC = () => {
   useEffect(() => {
     const fetchReview = async () => {
       try {
-        const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
-        const response = await fetch(`${apiUrl}/reviews/${id}`);
-        
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        
-        const data = await response.json();
+        // Use the API utility to fetch the review
+        const data = await apiGet<Review>(`reviews/${id}`);
         setReview(data);
         setLoading(false);
       } catch (err) {

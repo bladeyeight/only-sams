@@ -19,8 +19,10 @@ const corsOptions = {
     'https://only-sams.net',
     'https://www.only-sams.net'
   ],
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
-  credentials: true
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  credentials: true,
+  optionsSuccessStatus: 204,
+  allowedHeaders: ['Content-Type', 'Authorization']
 };
 
 // Middleware
