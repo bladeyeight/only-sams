@@ -75,8 +75,8 @@ const Reviews: React.FC = () => {
                   </td>
                   <td>{review.genre}</td>
                   <td>{review.platforms.join(', ')}</td>
-                  <td>{review.releaseDate ? new Date(review.releaseDate).toLocaleDateString() : 'N/A'}</td>
-                  <td>{new Date(review.createdAt).toLocaleDateString()}</td>
+                  <td>{review.releaseDate ? new Date(review.releaseDate).toLocaleDateString(undefined, { timeZone: 'UTC' }) : 'N/A'}</td>
+                  <td>{new Date(review.createdAt).toLocaleDateString(undefined, { timeZone: 'UTC' })}</td>
                   <td><span className="review-rating">{review.rating}</span></td>
                 </tr>
               ))}

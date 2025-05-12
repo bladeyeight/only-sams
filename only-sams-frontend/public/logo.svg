@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="24" cy="24" r="23" fill="#FFDE59" stroke="black" stroke-width="2"/>
+  <text x="24" y="20" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" dominant-baseline="central" fill="black">o-s</text>
+  <text x="27" y="36" font-family="Arial, sans-serif" font-size="22" font-weight="bold" text-anchor="middle" dominant-baseline="central" fill="black" transform="rotate(90, 27, 36)">)</text>
+</svg>

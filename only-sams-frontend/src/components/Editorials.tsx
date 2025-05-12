@@ -63,7 +63,7 @@ const Editorials: React.FC = () => {
                 <tr key={editorial._id}>
                   <td>{editorial.title}</td>
                   <td>{editorial.genre}</td>
-                  <td>{new Date(editorial.createdAt).toLocaleDateString()}</td>
+                  <td>{new Date(editorial.createdAt).toLocaleDateString(undefined, { timeZone: 'UTC' })}</td>
                 </tr>
               ))}
             </tbody>

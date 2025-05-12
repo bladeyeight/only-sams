@@ -92,7 +92,7 @@ const ReviewDetail: React.FC = () => {
 
       <div className="review-detail-footer">
         <p className="review-detail-date">
-          Published: {new Date(review.createdAt).toLocaleDateString()}
+          Published: {new Date(review.createdAt).toLocaleDateString(undefined, { timeZone: 'UTC' })}
         </p>
       </div>
     </div>

@@ -33,6 +33,49 @@ router.get('/editorials', async (req: Request, res: Response): Promise<void> => 
   }
 });
 
+// Get the most recently added review
+router.get('/latest', async (req: Request, res: Response): Promise<void> => {
+  try {
+    const latestReview: IReview | null = await Review.findOne({ type: 'Review' })
+      .sort({ createdAt: -1 })
+      .limit(1);
+      
+    if (!latestReview) {
+      res.status(404).json({ message: 'No reviews found' });
+      return;
+    }
+    
+    res.json(latestReview);
+  } catch (err: any) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// Search reviews by title
+router.get('/search', async (req: Request, res: Response): Promise<void> => {
+  try {
+    const query = req.query.q as string;
+    
+    if (!query) {
+      res.status(400).json({ message: 'Search query is required' });
+      return;
+    }
+    
+    // Create a case-insensitive regex for the search
+    const searchRegex = new RegExp(query, 'i');
+    
+    // Find reviews where title matches the search query
+    const reviews: IReview[] = await Review.find({ 
+      title: searchRegex,
+      type: 'Review'
+    }).sort({ createdAt: -1 });
+    
+    res.json(reviews);
+  } catch (err: any) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
 // Get a single review
 router.get('/:id', async (req: Request, res: Response): Promise<void> => {
   try {
