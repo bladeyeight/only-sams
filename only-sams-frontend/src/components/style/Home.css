@@ -170,6 +170,10 @@
 }
 
 @media (max-width: 768px) {
+  .hero-section {
+    padding: 50px 15px;
+  }
+  
   .hero-section h1 {
     font-size: 2rem;
   }
@@ -178,12 +182,111 @@
     font-size: 1rem;
   }
   
-  .game-card {
+  .featured-games-container {
     flex-direction: column;
+    gap: 15px;
+  }
+  
+  .game-card {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .game-info h3 {
+    font-size: 1.2rem;
+  }
+  
+  .game-developer, .game-release {
+    font-size: 0.9rem;
+  }
+  
+  /* Keep game rank on the left side */
+  .game-rank {
+    min-width: 60px;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .home-content {
+    padding: 15px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .top-games-section {
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 320px) {
+  .hero-section {
+    padding: 30px 10px;
+    margin-bottom: 20px;
+  }
+  
+  .hero-section h1 {
+    font-size: 1.5rem;
+  }
+  
+  .hero-section p {
+    font-size: 0.9rem;
+  }
+  
+  .home-content {
+    padding: 8px;
+  }
+  
+  .game-card {
+    display: flex;
+    width: 100%;
+  }
+  
+  .game-info {
+    padding: 10px;
+  }
+  
+  .game-info h3 {
+    font-size: 1rem;
+    margin-bottom: 5px;
+  }
+  
+  .game-developer, .game-release {
+    font-size: 0.8rem;
+    margin: 3px 0;
   }
   
   .game-rank {
-    width: 100%;
-    padding: 10px 0;
+    min-width: 35px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .top-games-section {
+    padding: 12px;
+  }
+  
+  .top-games-section h2 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+  }
+  
+  .featured-image {
+    height: 150px;
+  }
+  
+  .games-list {
+    gap: 12px;
+  }
+  
+  .featured-label {
+    padding: 5px 10px;
+    font-size: 0.9rem;
   }
 }

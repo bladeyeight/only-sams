@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './style/Navbar.css';
 import { apiGet } from '../utils/api';
@@ -12,6 +12,7 @@ const Navbar: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState<Review[]>([]);
   const [showResults, setShowResults] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
   
   const handleSearchChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -44,6 +45,16 @@ const Navbar: React.FC = () => {
       handleResultClick(searchResults[0]._id);
     }
   };
+  // Close mobile menu when navigating to a new page
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [navigate]);
+
+  // Toggle mobile menu
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
   return (
     <nav className="navbar">
       <div className="navbar-container">
@@ -92,7 +103,18 @@ const Navbar: React.FC = () => {
           )}
         </div>
         
-        <ul className="navbar-menu">
+        {/* Mobile menu button */}
+        <button 
+          className={`mobile-menu-button ${mobileMenuOpen ? 'active' : ''}`} 
+          onClick={toggleMobileMenu}
+          aria-label="Toggle menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        
+        <ul className={`navbar-menu ${mobileMenuOpen ? 'active' : ''}`}>
           <li className="navbar-item">
             <Link to="/reviews">Reviews</Link>
           </li>

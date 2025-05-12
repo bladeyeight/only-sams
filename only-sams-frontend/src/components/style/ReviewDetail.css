@@ -17,6 +17,7 @@
   font-size: 2.5rem;
   color: #2c3e50;
   margin-bottom: 1rem;
+  text-align: center;
 }
 
 .review-detail-meta {
@@ -103,6 +104,20 @@
   color: #e74c3c;
 }
 
+@media (max-width: 1024px) {
+  .review-detail-container {
+    padding: 1.5rem;
+  }
+  
+  .review-detail-title {
+    font-size: 2.2rem;
+  }
+  
+  .review-detail-header {
+    text-align: center;
+  }
+}
+
 @media (max-width: 768px) {
   .review-detail-container {
     padding: 1rem;
@@ -110,7 +125,7 @@
   
   .review-detail-title {
     font-size: 2rem;
-    padding-right: 70px;
+    /* Removed padding-right that was pushing the title to the left */
   }
   
   .review-detail-rating {
@@ -121,5 +136,11 @@
   
   .review-detail-content {
     font-size: 1rem;
+  }
+  
+  .review-detail-meta {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
   }
 }

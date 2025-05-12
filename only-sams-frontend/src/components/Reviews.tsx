@@ -54,7 +54,8 @@ const Reviews: React.FC = () => {
         <p className="no-reviews">No reviews available yet.</p>
       ) : (
         <div className="reviews-table-container">
-          <table className="reviews-table">
+          {/* Desktop/Tablet Table (visible on screens > 768px) */}
+          <table className="reviews-table desktop-table">
             <thead>
               <tr>
                 <th>Title</th>
@@ -67,7 +68,7 @@ const Reviews: React.FC = () => {
             </thead>
             <tbody>
               {reviews.map((review) => (
-                <tr key={review._id} className="review-row">
+                <tr key={`desktop-${review._id}`} className="review-row">
                   <td>
                     <Link to={`/reviews/${review._id}`} className="review-title-link">
                       {review.title}
@@ -77,6 +78,30 @@ const Reviews: React.FC = () => {
                   <td>{review.platforms.join(', ')}</td>
                   <td>{review.releaseDate ? new Date(review.releaseDate).toLocaleDateString(undefined, { timeZone: 'UTC' }) : 'N/A'}</td>
                   <td>{new Date(review.createdAt).toLocaleDateString(undefined, { timeZone: 'UTC' })}</td>
+                  <td><span className="review-rating">{review.rating}</span></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          {/* Mobile Table (visible on screens <= 768px) */}
+          <table className="reviews-table mobile-table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Platforms</th>
+                <th>Rating</th>
+              </tr>
+            </thead>
+            <tbody>
+              {reviews.map((review) => (
+                <tr key={`mobile-${review._id}`} className="review-row">
+                  <td>
+                    <Link to={`/reviews/${review._id}`} className="review-title-link">
+                      {review.title}
+                    </Link>
+                  </td>
+                  <td>{review.platforms.join(', ')}</td>
                   <td><span className="review-rating">{review.rating}</span></td>
                 </tr>
               ))}

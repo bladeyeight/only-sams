@@ -42,6 +42,31 @@
   border-radius: 8px;
 }
 
+/* Desktop table is visible by default */
+.desktop-table {
+  display: table;
+}
+
+/* Mobile table is hidden by default */
+.mobile-table {
+  display: none;
+}
+
+/* Media query for screens <= 768px */
+@media (max-width: 768px) {
+  .desktop-table {
+    display: none;
+  }
+  
+  .mobile-table {
+    display: table;
+  }
+  
+  .reviews-header {
+    font-size: 2rem;
+  }
+}
+
 .reviews-table {
   width: 100%;
   border-collapse: collapse;
