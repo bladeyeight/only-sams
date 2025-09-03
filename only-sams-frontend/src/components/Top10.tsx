@@ -1,8 +1,60 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './style/Top10.css';
 
+// Interface for individual game entry
+interface GameEntry {
+  rank: number;
+  title: string;
+  developer: string;
+  releaseDate: string;
+}
+
+// Interface for Top10List from backend
+interface Top10List {
+  _id: string;
+  title: string;
+  games: GameEntry[];
+  createdAt: string;
+  updatedAt: string;
+}
+
 const Top10: React.FC = () => {
+  const [top10Lists, setTop10Lists] = useState<Top10List[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  // Fetch top 10 lists from backend
+  useEffect(() => {
+    const fetchTop10Lists = async () => {
+      try {
+        const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+        const response = await fetch(`${apiUrl}/top10lists`);
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch top 10 lists');
+        }
+        
+        const data = await response.json();
+        setTop10Lists(data);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'An error occurred');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTop10Lists();
+  }, []);
+
+  // Format date for display
+  const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  };
   const topGamesAllTime = [
     {
       id: 1,
@@ -95,6 +147,37 @@ const Top10: React.FC = () => {
               </Link>
             ))}
           </div>
+        </div>
+
+        {/* Dynamic Top 10 Lists from Backend */}
+        <div className="dynamic-lists-section">
+          <h2>Other Top 10 Lists</h2>
+          
+          {loading && <p>Loading top 10 lists...</p>}
+          {error && <p className="error-message">Error: {error}</p>}
+          
+          {!loading && !error && top10Lists.length === 0 && (
+            <p>No additional top 10 lists found.</p>
+          )}
+          
+          {!loading && !error && top10Lists.map((list) => (
+            <div key={list._id} className="top10-list">
+              <h3>{list.title}</h3>
+              <p className="list-date">Created: {formatDate(list.createdAt)}</p>
+              <div className="games-list">
+                {list.games.map((game) => (
+                  <div key={game.rank} className="game-card">
+                    <div className="game-rank">{game.rank}</div>
+                    <div className="game-info">
+                      <h4>{game.title}</h4>
+                      <p className="game-developer">Developer: {game.developer}</p>
+                      <p className="game-release">Release: {formatDate(game.releaseDate)}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>

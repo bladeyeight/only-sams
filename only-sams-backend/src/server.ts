@@ -4,6 +4,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import path from 'path';
 import reviewRoutes from './routes/reviewRoutes';
+import top10ListRoutes from './routes/top10ListRoutes';
 
 // Load environment variables based on NODE_ENV
 const envFile = process.env.NODE_ENV === 'production' ? '.env.prod' : '.env.dev';
@@ -36,6 +37,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/gameRevie
 
 // Routes
 app.use('/reviews', reviewRoutes);
+app.use('/top10lists', top10ListRoutes);
 
 // Basic route
 app.get('/', (req: Request, res: Response) => {
