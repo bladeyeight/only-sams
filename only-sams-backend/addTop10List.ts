@@ -43,70 +43,71 @@ const addTop10List = async (listData: Top10ListInput) => {
 // Example usage (uncomment and modify to use):
 
 const newTop10ListData: Top10ListInput = {
-  title: "Best Video Game Narrative of All Time",
+  title: "My Favorite Horror Games of All Time",
   games: [
     {
       rank: 1,
+      title: "Resident Evil 2 Remake",
+      developer: "Capcom",
+      releaseDate: new Date('2019-01-25')
+    },
+    {
+      rank: 2,
+      title: "Resident Evil 4",
+      developer: "Capcom",
+      releaseDate: new Date('2011-01-11')
+    },
+    {
+      rank: 3,
+      title: "F.E.A.R",
+      developer: "Monolith Productions",
+      releaseDate: new Date('2005-10-17')
+    },
+    {
+      rank: 4,
+      title: "Darkwood",
+      developer: "Acid Wizard Studio",
+      releaseDate: new Date('2017-08-17')
+    },
+    {
+      rank: 5,
+      title: "Alien Isolation",
+      developer: "Creative Assembly",
+      releaseDate: new Date('2014-10-07')
+    },
+    {
+      rank: 6,
       title: "Soma",
       developer: "Frictional Games",
       releaseDate: new Date('2015-09-22')
     },
     {
-      rank: 2,
-      title: "The Witcher 3: Wild Hunt",
-      developer: "CD Projekt Red",
-      releaseDate: new Date('2015-05-18')
-    },
-    {
-      rank: 3,
-      title: "Metal Gear Solid 2: Sons of Liberty",
-      developer: "Konami",
-      releaseDate: new Date('2001-11-13')
-    },
-    {
-      rank: 4,
-      title: "The Forgotten City",
-      developer: "Modern Storyteller",
-      releaseDate: new Date('2021-07-28')
-    },
-    {
-      rank: 5,
+      rank: 7,
       title: "Alan Wake 2",
       developer: "Remedy Entertainment",
       releaseDate: new Date('2023-10-27')
     },
     {
-      rank: 6,
-      title: "1000x Resist",
-      developer: "sunset visitor 斜陽過客",
-      releaseDate: new Date('2024-05-09')
-    },
-    {
-      rank: 7,
-      title: "Sanabi",
-      developer: "Wonder Potion",
-      releaseDate: new Date('2023-11-08')
-    },
-    {
       rank: 8,
-      title: "The Walking Dead",
-      developer: "Telltale Games",
-      releaseDate: new Date('2012-04-24')
+      title: "Resident Evil 7",
+      developer: "Capcom",
+      releaseDate: new Date('2017-01-24')
     },
     {
       rank: 9,
-      title: "Disco Elysium",
-      developer: "Larian Studios",
-      releaseDate: new Date('2019-10-15')
+      title: "Last of Us Part I",
+      developer: "Naughty Dog",
+      releaseDate: new Date('2013-06-13')
     },
     {
       rank: 10,
-      title: "The Last of Us Part I",
-      developer: " Naughty Dog",
-      releaseDate: new Date('2013-06-14')
+      title: "Outlast",
+      developer: "Red Barrels",
+      releaseDate: new Date('2013-09-04')
     }
   ]
 };
+
 
 // Uncomment the lines below to add the example list
 
