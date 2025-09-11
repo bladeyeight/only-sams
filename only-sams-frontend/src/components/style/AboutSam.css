@@ -18,8 +18,38 @@
 }
 
 .about-section {
-  background-color: white;
-  padding: 30px;
+  background-color: #3498db;
+  padding: 40px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: white;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.bio-content {
+  width: 100%;
+}
+
+.profile-image-container {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+.profile-image {
+  width: 320px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid black;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.bio-paragraph {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  text-align: left;
+  color: white;
 }
