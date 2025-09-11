@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './style/Top10.css';
+import { apiGet } from '../utils/api';
 
 // Interface for individual game entry
 interface GameEntry {
@@ -28,14 +29,7 @@ const Top10: React.FC = () => {
   useEffect(() => {
     const fetchTop10Lists = async () => {
       try {
-        const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
-        const response = await fetch(`${apiUrl}/top10lists`);
-        
-        if (!response.ok) {
-          throw new Error('Failed to fetch top 10 lists');
-        }
-        
-        const data = await response.json();
+        const data = await apiGet<Top10List[]>('reviews/top10lists');
         setTop10Lists(data);
       } catch (err) {
         setError(err instanceof Error ? err.message : 'An error occurred');
@@ -150,9 +144,7 @@ const Top10: React.FC = () => {
         </div>
 
         {/* Dynamic Top 10 Lists from Backend */}
-        <div className="dynamic-lists-section">
-          <h2>Other Top 10 Lists</h2>
-          
+        <div className="dynamic-lists-section">          
           {loading && <p>Loading top 10 lists...</p>}
           {error && <p className="error-message">Error: {error}</p>}
           
@@ -163,7 +155,7 @@ const Top10: React.FC = () => {
           {!loading && !error && top10Lists.map((list) => (
             <div key={list._id} className="top10-list">
               <h3>{list.title}</h3>
-              <p className="list-date">Created: {formatDate(list.createdAt)}</p>
+              <p className="list-date"></p>
               <div className="games-list">
                 {list.games.map((game) => (
                   <div key={game.rank} className="game-card">

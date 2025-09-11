@@ -1,5 +1,6 @@
 import express, { Request, Response, Router } from 'express';
 import Review, { IReview } from '../models/Review';
+import Top10List, { ITop10List } from '../models/Top10List';
 
 const router: Router = express.Router();
 
@@ -71,6 +72,16 @@ router.get('/search', async (req: Request, res: Response): Promise<void> => {
     }).sort({ createdAt: -1 });
     
     res.json(reviews);
+  } catch (err: any) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// Get all top 10 lists (must be before /:id route to avoid conflicts)
+router.get('/top10lists', async (req: Request, res: Response): Promise<void> => {
+  try {
+    const top10Lists: ITop10List[] = await Top10List.find().sort({ createdAt: -1 });
+    res.json(top10Lists);
   } catch (err: any) {
     res.status(500).json({ message: err.message });
   }
