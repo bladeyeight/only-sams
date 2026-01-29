@@ -23,6 +23,5 @@
       "HostDirectory": "/var/certbot/letsencrypt",
       "ContainerDirectory": "/etc/letsencrypt"
     }
-  ],
-  "Logging": "/var/log/nginx"
+  ]
 }
