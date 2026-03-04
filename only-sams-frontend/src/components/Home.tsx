@@ -42,6 +42,7 @@ const Home: React.FC = () => {
       id: 1,
       title: "Resident Evil Requiem",
       developer: "Capcom",
+      genre: "Survival Horror",
       releaseDate: "February 27, 2026",
       reviewId: "69a84cf3d1f40d3955fa06e5" // Hardcoded ObjectId for this game's review
     },
@@ -49,6 +50,7 @@ const Home: React.FC = () => {
       id: 2,
       title: "Cairn",
       developer: "The Game Bakers",
+      genre: "Climbing",
       releaseDate: "January 29, 2026",
       reviewId: "698b8845bf488a3c753905d5" // Hardcoded ObjectId for this game's review
     },
@@ -56,6 +58,7 @@ const Home: React.FC = () => {
       id: 3,
       title: "Death Howl",
       developer: "The Outer Zone",
+      genre: "Deck Builder",
       releaseDate: "December 9, 2025",
       reviewId: "697b965a9f0e3f9210e2518d" // Hardcoded ObjectId for this game's review
     },
@@ -63,6 +66,7 @@ const Home: React.FC = () => {
       id: 4,
       title: "Mio: Memories in Orbit",
       developer: "Focus Entertainment",
+      genre: "Metroidvania",
       releaseDate: "January 20, 2026",
       reviewId: "69811718fb9df5b7c1fc534e" // Hardcoded ObjectId for this game's review
     }
@@ -73,6 +77,7 @@ const Home: React.FC = () => {
       id: 1,
       title: "Hades II",
       developer: "SuperGiant Games",
+      genre: "Roguelite",
       releaseDate: "September 25, 2025",
       reviewId: "695c327374f0fe96f499c394" // Hardcoded ObjectId for this game's review
     },
@@ -80,6 +85,7 @@ const Home: React.FC = () => {
       id: 2,
       title: "Hollow Knight: Silksong",
       developer: "Team Cherry",
+      genre: "Metroidvania",
       releaseDate: "September 4, 2025",
       reviewId: "68dc3dda64e92e2b26d5c6c6" // Hardcoded ObjectId for this game's review
     },
@@ -87,6 +93,7 @@ const Home: React.FC = () => {
       id: 3,
       title: "The Alters",
       developer: "11 Bit Studios",
+      genre: "Base Building",
       releaseDate: "June 13, 2025",
       reviewId: "685d5574699ec890abe5cbea" // Hardcoded ObjectId for this game's review
     },
@@ -94,6 +101,7 @@ const Home: React.FC = () => {
       id: 4,
       title: "Blue Prince",
       developer: "Dogubomb",
+      genre: "Puzzle",
       releaseDate: "April 10, 2025",
       reviewId: "68b7403c50fb3bcd5796ec85" // Hardcoded ObjectId for this game's review
     },
@@ -101,6 +109,7 @@ const Home: React.FC = () => {
       id: 5,
       title: "Atomfall",
       developer: "Rebellion Developments",
+      genre: "Survival Horror",
       releaseDate: "March 27, 2025",
       reviewId: "6807ae9fb72d175f0c4a6165" // Hardcoded ObjectId for this game's review
     },
@@ -108,6 +117,7 @@ const Home: React.FC = () => {
       id: 6,
       title: "Blade Chimera",
       developer: "Team Ladybug",
+      genre: "Metroidvania",
       releaseDate: "January 16, 2025",
       reviewId: "68220b014505828405783563" // Hardcoded ObjectId for this game's review
     },
@@ -115,6 +125,7 @@ const Home: React.FC = () => {
       id: 7,
       title: "Elden Ring: Nightreign",
       developer: "From Software",
+      genre: "Soulslike",
       releaseDate: "May 30, 2025",
       reviewId: "688bb5c268f649b375208fd7" // Hardcoded ObjectId for this game's review
     },
@@ -122,6 +133,7 @@ const Home: React.FC = () => {
       id: 8,
       title: "Skin Deep",
       developer: "Blendo Studios",
+      genre: "Immersive Sim",
       releaseDate: "April 30, 2025",
       reviewId: "6866c8a7041c5bcf54e19267" // Hardcoded ObjectId for this game's review
     },
@@ -129,6 +141,7 @@ const Home: React.FC = () => {
       id: 9,
       title: "Donkey Kong Bananza",
       developer: "Nintendo",
+      genre: "Platformer",
       releaseDate: "July 17, 2025",
       reviewId: "68b8581055e04f87bc85f0a2" // Hardcoded ObjectId for this game's review
     },
@@ -136,6 +149,7 @@ const Home: React.FC = () => {
       id: 10,
       title: "Citizen Sleeper 2: Starward Vector",
       developer: "Jump Over The Age",
+      genre: "Graphic Novel",
       releaseDate: "January 31, 2025",
       reviewId: "68221a6199f049d81edc570c" // Hardcoded ObjectId for this game's review
     }
@@ -186,6 +200,7 @@ const Home: React.FC = () => {
                   <div className="game-info">
                     <h3>{game.title}</h3>
                     <p className="game-developer">Developer: {game.developer}</p>
+                    <p className="game-genre">Genre: {game.genre}</p>
                     <p className="game-release">Release: {game.releaseDate}</p>
                   </div>
                 </div>
@@ -204,6 +219,7 @@ const Home: React.FC = () => {
                   <div className="game-info">
                     <h3>{game.title}</h3>
                     <p className="game-developer">Developer: {game.developer}</p>
+                    <p className="game-genre">Genre: {game.genre}</p>
                     <p className="game-release">Release: {game.releaseDate}</p>
                   </div>
                 </div>
