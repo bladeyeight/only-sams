@@ -6,10 +6,11 @@ import './style/ReviewDetail.css';
 interface Review {
   _id: string;
   title: string;
-  rating: number;
+  type: string;
+  rating?: number;
   content: string;
-  platforms: string[];
-  genre: string;
+  platforms?: string[];
+  genre?: string;
   releaseDate?: Date;
   imageUrls?: string[];
   createdAt: string;
@@ -62,12 +63,16 @@ const ReviewDetail: React.FC = () => {
     <div className="review-detail-container">
       <div className="review-detail-header">
         <h1 className="review-detail-title">{review.title}</h1>
-        <div className="review-detail-rating-container">
-          <span className="review-detail-rating">{review.rating}</span>
-        </div>
+        {review.rating != null && (
+          <div className="review-detail-rating-container">
+            <span className="review-detail-rating">{review.rating}</span>
+          </div>
+        )}
         <div className="review-detail-meta">
-          <span className="review-detail-genre">{review.genre}</span>
-          <span className="review-detail-platforms">{review.platforms.join(', ')}</span>
+          {review.genre && <span className="review-detail-genre">{review.genre}</span>}
+          {review.platforms && review.platforms.length > 0 && (
+            <span className="review-detail-platforms">{review.platforms.join(', ')}</span>
+          )}
           {review.releaseDate && (
             <span className="review-detail-release">
               Released: {new Date(review.releaseDate).toLocaleDateString(undefined, { timeZone: 'UTC' })}

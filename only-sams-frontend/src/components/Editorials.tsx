@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { apiGet } from '../utils/api';
 import './style/Editorials.css';
 
@@ -60,8 +61,12 @@ const Editorials: React.FC = () => {
             </thead>
             <tbody>
               {editorials.map((editorial) => (
-                <tr key={editorial._id}>
-                  <td>{editorial.title}</td>
+                <tr key={editorial._id} className="editorial-row">
+                  <td>
+                    <Link to={`/reviews/${editorial._id}`} className="editorial-title-link">
+                      {editorial.title}
+                    </Link>
+                  </td>
                   <td>{editorial.genre}</td>
                   <td>{new Date(editorial.createdAt).toLocaleDateString(undefined, { timeZone: 'UTC' })}</td>
                 </tr>

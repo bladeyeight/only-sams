@@ -157,7 +157,7 @@
   margin-bottom: 10px;
 }
 
-.game-developer, .game-release {
+.game-developer, .game-genre, .game-release {
   margin: 5px 0;
   color: #7f8c8d;
   font-weight: 500;
@@ -196,7 +196,7 @@
     font-size: 1.2rem;
   }
   
-  .game-developer, .game-release {
+  .game-developer, .game-genre, .game-release {
     font-size: 0.9rem;
   }
   
@@ -254,7 +254,7 @@
     margin-bottom: 5px;
   }
   
-  .game-developer, .game-release {
+  .game-developer, .game-genre, .game-release {
     font-size: 0.8rem;
     margin: 3px 0;
   }

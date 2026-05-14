@@ -65,10 +65,9 @@ router.get('/search', async (req: Request, res: Response): Promise<void> => {
     // Create a case-insensitive regex for the search
     const searchRegex = new RegExp(query, 'i');
     
-    // Find reviews where title matches the search query
+    // Find reviews and editorials where title matches the search query
     const reviews: IReview[] = await Review.find({ 
-      title: searchRegex,
-      type: 'Review'
+      title: searchRegex
     }).sort({ createdAt: -1 });
     
     res.json(reviews);
