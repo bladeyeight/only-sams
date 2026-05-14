@@ -4,10 +4,10 @@ import mongoose, { Document, Schema } from 'mongoose';
 export interface IReview extends Document {
   title: string;
   type: string;
-  rating: number;
+  rating?: number;
   content: string;
-  platforms: string[];
-  genre: string;
+  platforms?: string[];
+  genre?: string;
   releaseDate?: Date;
   imageUrls?: string[];
   createdAt: Date;
@@ -28,7 +28,7 @@ const reviewSchema = new Schema<IReview>({
   },
   rating: {
     type: Number,
-    required: true,
+    required: false,
     min: 1,
     max: 10
   },
@@ -38,12 +38,11 @@ const reviewSchema = new Schema<IReview>({
   },
   platforms: {
     type: [String],
-    required: true,
-    validate: [(val: string[]) => val.length > 0, 'At least one platform is required']
+    required: false
   },
   genre: {
     type: String,
-    required: true,
+    required: false,
     trim: true
   },
   releaseDate: {

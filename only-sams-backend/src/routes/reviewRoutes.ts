@@ -24,20 +24,20 @@ router.get('/reviews', async (req: Request, res: Response): Promise<void> => {
   }
 });
 
-// Get all editorials (type = 'editorial')
+// Get all editorials (type = 'Editorial')
 router.get('/editorials', async (req: Request, res: Response): Promise<void> => {
   try {
-    const editorials: IReview[] = await Review.find({ type: 'editorial' }).sort({ createdAt: -1 });
+    const editorials: IReview[] = await Review.find({ type: 'Editorial' }).sort({ createdAt: -1 });
     res.json(editorials);
   } catch (err: any) {
     res.status(500).json({ message: err.message });
   }
 });
 
-// Get the most recently added review
+// Get the most recently added review or editorial
 router.get('/latest', async (req: Request, res: Response): Promise<void> => {
   try {
-    const latestReview: IReview | null = await Review.findOne({ type: 'Review' })
+    const latestReview: IReview | null = await Review.findOne()
       .sort({ createdAt: -1 })
       .limit(1);
       
