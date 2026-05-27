@@ -115,7 +115,7 @@ const Top10: React.FC = () => {
     },
     {
       id: 10,
-      title: "Prince of Persia: Lost Crown",
+      title: "Prince of Persia: The Lost Crown",
       developer: "Ubisoft Montpellier",
       releaseDate: "January 18, 2024",
       reviewId: "65f0c981d2e3f4a5b6c7d8e9" // Hardcoded ObjectId for this game's review

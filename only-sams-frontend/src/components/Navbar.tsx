@@ -73,7 +73,7 @@ const Navbar: React.FC = () => {
           <form onSubmit={handleSearchSubmit}>
             <input
               type="text"
-              placeholder="Search reviews..."
+              placeholder="Search"
               value={searchTerm}
               onChange={handleSearchChange}
               className="search-input"
