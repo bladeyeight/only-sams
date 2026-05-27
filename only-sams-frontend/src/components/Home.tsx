@@ -197,7 +197,7 @@ const Home: React.FC = () => {
               alt="Currently Playing Game" 
               className="featured-image" 
             />
-            <div className="featured-title">Mewgenics</div>
+            <div className="featured-title">007 First Light</div>
           </div>
           
           <Link to={latestReview ? `/reviews/${latestReview._id}` : '#'} className="featured-game-card-link">
