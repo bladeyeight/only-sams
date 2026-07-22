@@ -222,7 +222,7 @@ const Home: React.FC = () => {
               <img 
                 src={latestReview && latestReview.imageUrls && latestReview.imageUrls.length > 0 
                   ? latestReview.imageUrls[0] 
-                  : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTb4idhb3SUJBM8ADFi_Q6gLaox8OzWfLxZ3hp88wy8Qw&s=10"} 
+                  : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLcCt3IItN8EjlmH1rF7KcI32cnn_AiUK1gR1fwzNKmg&s=10"} 
                 alt={latestReview ? latestReview.title : "Recently Added Game"} 
                 className="featured-image" 
               />
